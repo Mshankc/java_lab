@@ -1,0 +1,28 @@
+java
+import java.util.Scanner;
+
+public class ArmstrongNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the limit: ");
+        int limit = scanner.nextInt();
+
+        System.out.println("Armstrong numbers till " + limit + " are:");
+
+        for (int number = 0; number <= limit; number++) {
+            int sum = 0;
+            int temp = number;
+            int numOfDigits = String.valueOf(number).length();
+
+            while (temp != 0) {
+                int digit = temp % 10;
+                sum += Math.pow(digit, numOfDigits);
+                temp /= 10;
+            }
+
+            if (sum == number) {
+                System.out.println(number);
+            }
+        }
+    }
+}
