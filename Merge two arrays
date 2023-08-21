@@ -1,0 +1,14 @@
+import java.util.Arrays;
+class Mergearray{
+public static void main(String args[]){
+int firstArray[]={1,2,3};
+int secondArray[]={4,5,6};
+int l1=firstArray.length;
+int l2=secondArray.length;
+int arraySize=l1+l2;
+int size[]=new int[arraySize];
+System.arraycopy(firstArray,0,size,0,l1);
+System.arraycopy(secondArray,0,size,l1,l2);
+System.out.println(Arrays.toString(size));
+}
+}
