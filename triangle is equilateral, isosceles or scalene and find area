@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class TriangleChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the lengths of the sides of the triangle:");
+
+        System.out.print("Side 1: ");
+        double side1 = scanner.nextDouble();
+
+        System.out.print("Side 2: ");
+        double side2 = scanner.nextDouble();
+
+        System.out.print("Side 3: ");
+        double side3 = scanner.nextDouble();
+
+        // Check if the triangle is valid
+        if (isValidTriangle(side1, side2, side3)) {
+            String triangleType = getTriangleType(side1, side2, side3);
+            double area = calculateTriangleArea(side1, side2, side3);
+
+            System.out.println("Triangle Type: " + triangleType);
+            System.out.println("Area: " + area);
+        } else {
+            System.out.println("Invalid triangle.");
+        }
+    }
+
+    public static boolean isValidTriangle(double side1, double side2, double side3) {
+        return (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1);
+    }
+
+    public static String getTriangleType(double side1, double side2, double side3) {
+        if (side1 == side2 && side2 == side3) {
+            return "Equilateral";
+        } else if (side1 == side2 || side1 == side3 || side2 == side3) {
+            return "Isosceles";
+        } else {
+            return "Scalene";
+        }
+    }
+
+    public static double calculateTriangleArea(double side1, double side2, double side3) {
+        double s = (side1 + side2 + side3) / 2; // semi-perimeter
+        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+}
