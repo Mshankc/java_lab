@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class BaseConversion {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer number: ");
+        int number = scanner.nextInt();
+
+        String binary = convertToBinary(number);
+        String octal = convertToOctal(number);
+        String hexadecimal = convertToHexadecimal(number);
+
+        System.out.println("Binary: " + binary);
+        System.out.println("Octal: " + octal);
+        System.out.println("Hexadecimal: " + hexadecimal);
+    }
+
+    public static String convertToBinary(int number) {
+        return Integer.toBinaryString(number);
+    }
+
+    public static String convertToOctal(int number) {
+        return Integer.toOctalString(number);
+    }
+
+    public static String convertToHexadecimal(int number) {
+        return Integer.toHexString(number);
+    }
+}
