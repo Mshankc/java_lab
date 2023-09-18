@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class AnagramChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first string: ");
+        String str1 = scanner.nextLine();
+
+        System.out.print("Enter the second string: ");
+        String str2 = scanner.nextLine();
+
+        boolean isAnagram = checkAnagram(str1, str2);
+
+        if (isAnagram) {
+            System.out.println(str1 + " and " + str2 + " are anagrams.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not anagrams.");
+        }
+    }
+
+    public static boolean checkAnagram(String str1, String str2) {
+        // Remove all whitespace and convert to lowercase
+        str1 = str1.replaceAll("\\s", "").toLowerCase();
+        str2 = str2.replaceAll("\\s", "").toLowerCase();
+
+        // Check if the lengths of the strings are equal
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        // Create an array to count the frequency of each character
+        int[] charCount = new int[26];
+
+        // Iterate over the characters of the first string
+        for (int i = 0; i < str1.length(); i++) {
+            char ch = str1.charAt(i);
+            charCount[ch - 'a']++;
+        }
+
+        // Iterate over the characters of the second string
+        for (int i = 0; i < str2.length(); i++) {
+            char ch = str2.charAt(i);
+            charCount[ch - 'a']--;
+        }
+
+        // Check if all character counts are zero
+        for (int count : charCount) {
+            if (count != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
